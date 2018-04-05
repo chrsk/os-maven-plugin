@@ -1,0 +1,8 @@
+#set ($query = $model.getModelElementQuery() )
+#set ($identifier = $model.getIdentifier() )
+#set ($getterName = ${stringUtils.capitalize($namingStrategy.getJavaVariableNameForComponent($model))} )
+#set ($componentVariable = $namingStrategy.getJavaVariableNameForComponent($model) )
+	public org.openqa.selenium.support.ui.Select get$getterName()
+	{
+		return new org.openqa.selenium.support.ui.Select($componentVariable);
+	}

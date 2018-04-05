@@ -1,0 +1,7 @@
+#set ($query = $model.getModelElementQuery() )
+#set ($identifier = $model.getIdentifier() )
+#set ($visibleMethodName = ${stringUtils.capitalize($namingStrategy.getJavaVariableNameForComponent($model))} )
+	public boolean is${visibleMethodName}Visible()
+	{
+		return ModelElementQuery.${query}.containsElement(openSAGA.getWebDriver(), "${identifier}");
+	}

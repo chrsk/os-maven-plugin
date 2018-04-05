@@ -1,0 +1,7 @@
+#set ($clickMethodName = ${stringUtils.capitalize($namingStrategy.getJavaVariableNameForComponent($model))} )
+#set ($componentVariable = $namingStrategy.getJavaVariableNameForComponent($model) )
+	public void click$clickMethodName()
+	{
+		${componentVariable}.click();
+		openSAGA.waitReady();
+	}

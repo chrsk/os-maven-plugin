@@ -1,0 +1,9 @@
+#set ($type = $model.getQuery().getComponentType().getName() )
+#set ($query = $model.getModelElementQuery() )
+#set ($identifier = $model.getIdentifier() )
+#set ($getterName = ${stringUtils.capitalize($namingStrategy.getJavaVariableNameForComponent($model))} )
+#set ($componentVariable = $namingStrategy.getJavaVariableNameForComponent($model) )
+	public $type get$getterName()
+	{
+		return $componentVariable;
+	}

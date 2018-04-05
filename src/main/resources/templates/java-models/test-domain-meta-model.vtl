@@ -1,0 +1,22 @@
+package $packageName;
+
+import javax.annotation.Generated;
+import org.opensaga.selenium.domain.*;
+import org.opensaga.selenium.domain.TestDomain;
+
+@Generated("$website")
+public class $className implements TestDomain
+{
+#foreach($domainType in $domainTypes)
+ 	public static final $namingStrategy.getJavaClassNameForDomainTypeModel($domainType) $namingStrategy.getJavaConstantNameForDomainTypeModel($domainType) = new $namingStrategy.getJavaClassNameForDomainTypeModel($domainType)();
+ 	
+#end
+
+	public static class Relation {
+	
+#foreach($relationInfo in $relationTypes)
+ 		public static final RelationTestMetaModel $namingStrategy.getJavaConstantNameForMetaModel($relationInfo) = new DefaultRelationTestMetaModel("$relationInfo.getId()", "$relationInfo.getName()");
+ 	
+#end
+	}
+}

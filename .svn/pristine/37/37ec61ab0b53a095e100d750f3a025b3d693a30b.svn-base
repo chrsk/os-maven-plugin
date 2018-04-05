@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relation-set id="$model.getId()"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="$schema">
+
+
+#foreach($relationModel in $model.getRelations())
+    <relation id="$relationModel.getId()"
+              inverse-relation-id="$relationModel.getInverseRelationId()"
+              start-type-ref="$relationModel.getStartDomainTypeModel().getId()"
+              end-type-ref="$relationModel.getEndDomainTypeModel().getId()"
+              start-cardinality="$relationModel.getStartCardinality().getCardinality()" 
+              end-cardinality="$relationModel.getEndCardinality().getCardinality()"
+              name="$relationModel.getName()"
+              inverse-relation-name="$relationModel.getInverseRelationName()"
+    />
+    
+#end
+    
+</relation-set>

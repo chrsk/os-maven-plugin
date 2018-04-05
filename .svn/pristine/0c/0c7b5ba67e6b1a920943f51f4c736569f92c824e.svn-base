@@ -1,0 +1,57 @@
+package $packageName;
+
+import javax.annotation.Generated;
+import org.opensaga.runtime.model.meta.*;
+import org.opensaga.selenium.meta.*;
+import org.opensaga.runtime.model.meta.Domain;
+import org.opensaga.selenium.query.FindModelElement;
+import org.opensaga.selenium.OpenSAGAViewObject;
+import org.opensaga.selenium.query.ModelElementQuery;
+import org.opensaga.selenium.OpenSAGA;
+
+@SuppressWarnings("unused")
+@Generated("$website")
+#set ( $viewModel = $model[0] )
+public class $namingStrategy.getJavaClassNameForViewModel($viewModel)
+#if ( $extendsClass )
+	extends $extendingClass
+#end
+ implements OpenSAGAViewObject
+{
+
+	private OpenSAGA openSAGA;
+
+	public String getId()
+	{
+		return "$viewModel.getId()";
+	}
+
+#foreach($componentModel in $viewModel.getComponentMetaModels())
+#set ($type = $componentModel.getQuery().getComponentType().getName() )
+#set ($query = $componentModel.getModelElementQuery() )
+#set ($componentIdentifier = $componentModel.getComponentIdentifier() )
+#set ($identifier = $componentModel.getIdentifier() )
+#if ($componentIdentifier.isTranslatedValue() )
+#set ($identifier = "[" + $componentModel.getIdentifier() + "]" )
+#end
+#set ($componentVariable = $namingStrategy.getJavaVariableNameForComponent($componentModel) )
+	@FindModelElement(query = ModelElementQuery.${query}, value = "$identifier")
+	private $type $componentVariable;	
+	
+#foreach($method in $componentModel.getQuery().getConvenientMethods())
+${methodGenerator.generateMethod($method, $namingStrategy, $componentModel)}
+
+#end
+#end	
+	
+	@Override
+    public boolean identify()
+    {
+        return true;
+    }
+    
+    protected OpenSAGA getOpenSAGA()
+    {
+    	return this.openSAGA;	
+    }
+}

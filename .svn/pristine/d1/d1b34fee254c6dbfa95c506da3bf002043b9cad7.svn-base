@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<some-other-type id="base.d_user" name="User"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://www.opensaga.org/schema/model/domain-type-1.5.xsd">
+</some-other-type>
