@@ -1,9 +1,0 @@
-### Root Logger
-log4j.rootLogger=INFO, Maven
-
-### Maven Appender
-log4j.appender.Maven=org.opensaga.plugin.util.MavenLogAppender
-log4j.appender.Maven.layout=org.apache.log4j.PatternLayout
-log4j.appender.Maven.layout.ConversionPattern=%-5p %m
-
-log4j.net.schmizz.sshj.connection.channel.direct.SessionChannel=WARN
